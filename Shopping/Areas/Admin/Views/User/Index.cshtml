@@ -1,0 +1,39 @@
+﻿@model IEnumerable<UserRole>
+@{
+    ViewData["title"] = "User Listed";
+}
+<h3>List Category</h3>
+<a asp-action="Create" asp-controller="User" >Add Category</a>
+
+<table class="table">
+  <thead>
+    <tr>
+
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Role</th>
+      
+
+    </tr>
+  </thead>
+  <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+              
+              <td>@item.Username</td>
+     
+
+                  <td>@item.Email</td>
+                          <td>@item.Role</td>
+                  <td>
+                                  <a asp-action="Edit" asp-controller="User" asp-route-Id="@item.Id" class="btn btn-warning btn-sm" >Edit User</a>
+                                  <a asp-action="Delete" asp-controller="User" asp-route-Id="@item.Id" class="btn btn-danger btn-sm confirmDeletion">Delete User</a>
+                  </td>
+
+
+            </tr>
+
+        }
+  </tbody>
+</table>

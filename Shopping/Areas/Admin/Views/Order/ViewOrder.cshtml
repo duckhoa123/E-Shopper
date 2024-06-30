@@ -1,0 +1,45 @@
+﻿@model IEnumerable<OrderDetails>
+@{
+    ViewData["title"] = "Order Details";
+}
+<h3>Order Details</h3>
+<h4>Order code: @ViewData["code"]</h4>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      
+     
+      <th scope="col">Product Id</th>
+      <th scope="col">Product Name</th>
+      <th scope="col">Product Image</th>
+       <th scope="col">Product Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Total</th>
+
+    </tr>
+  </thead>
+  <tbody>
+        @foreach (var item in Model)
+        {
+                <tr>
+                  
+                   <td>@item.ProductId</td>
+                   <td>@item.Product.Name</td>
+                   <td><img src="~/media/products/@item.Product.Image" width="120" /></td> 
+                   <td>@item.Price</td>
+                   <td>@item.Quantity</td>
+                           <td>@(item.Quantity*item.Price)</td>
+
+                  
+                     
+
+
+                </tr>
+
+        }
+
+  </tbody>
+</table>
+ <h4>Total Price: @Model.Sum(x => x.Quantity * x.Price).ToString()</h4>

@@ -1,0 +1,43 @@
+﻿@model UserRole
+@{
+	ViewData["title"] = "Create User";
+}
+<h4>Create User</h4>
+<div class="col-md-9">
+	<form asp-action="Create" enctype="multipart/form-data">
+		<div asp-validation-summary="ModelOnly" class="text-danger">
+
+		</div>
+		<div class="form-group">
+			<label>Username</label>
+			<input asp-for="Username" class="form-control"/>
+			<span asp-validation-for="Username" class="text-danger"/>
+		</div>
+		<div class="form-group">
+			<label>Password</label>
+			<input asp-for="Password" class="form-control"/>
+			<span asp-validation-for="Password" class="text-danger"/>
+		</div>
+		<div class="form-group">
+			<label>Email</label>
+			<textarea asp-for="Email" class="form-control"></textarea>
+			<span asp-validation-for="Email" class="text-danger"/>
+		</div>
+		<div class="form-group">
+			<label>Role</label>
+			<select asp-for="Role" class="form-control" asp-items="ViewBag.Roles">
+				
+			</select>
+			<span asp-validation-for="Role" class="text-danger"/>
+		</div>
+		<div class="form-group">
+			<button class="btn btn-primary">Create</button>
+		</div>
+			</form>
+	<a asp-action="Index">Back To List Product</a>
+	</div>
+@section Scripts {
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+}
